@@ -50,7 +50,7 @@ class SignupScreen extends StatelessWidget {
                       'role': 'user',
                       'createdAt': Timestamp.now(),
                     });
-                Navigator.pushNamed(context, '/');
+                Navigator.pushNamed(context, '/login');
               },
               child: Text("Register"),
             ),

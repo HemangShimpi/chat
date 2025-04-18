@@ -28,6 +28,10 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashScreen(),
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
+        '/home': (context) => MessageBoardsScreen(),
+        '/chat': (context) => ChatScreen(),
+        '/profile': (context) => ProfileScreen(),
+        '/settings': (context) => SettingsScreen(),
       },
     );
   }

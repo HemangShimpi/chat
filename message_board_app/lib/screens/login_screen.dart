@@ -40,7 +40,10 @@ class LoginScreen extends StatelessWidget {
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
-                                Navigator.pushReplacementNamed(context, '/');
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  '/home',
+                                );
                               },
                               child: Text("Continue"),
                             ),
@@ -68,7 +71,7 @@ class LoginScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                Navigator.pushNamed(context, '/signup');
               },
               child: Text("Don't have an account? Sign up"),
             ),
