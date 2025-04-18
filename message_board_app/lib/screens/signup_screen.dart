@@ -36,21 +36,33 @@ class SignupScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                UserCredential user = await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                    );
-                await FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(user.user!.uid)
-                    .set({
-                      'firstName': firstNameController.text.trim(),
-                      'lastName': lastNameController.text.trim(),
-                      'role': 'user',
-                      'createdAt': Timestamp.now(),
-                    });
-                Navigator.pushNamed(context, '/login');
+                try {
+                  // Firebase Auth: Create User
+                  UserCredential userCredential = await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                      );
+
+                  // Firestore: Store user profile
+                  await FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(userCredential.user!.uid)
+                      .set({
+                        'firstName': firstNameController.text.trim(),
+                        'lastName': lastNameController.text.trim(),
+                        'email': emailController.text.trim(),
+                        'role': 'user',
+                        'createdAt': Timestamp.now(),
+                      });
+
+                  Navigator.pushReplacementNamed(context, '/home');
+                } catch (e) {
+                  print("Signup Error: $e");
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text("Error: $e")));
+                }
               },
               child: Text("Register"),
             ),

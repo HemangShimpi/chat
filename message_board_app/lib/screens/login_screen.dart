@@ -51,19 +51,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                   );
                 } catch (e) {
-                  showDialog(
-                    context: context,
-                    builder:
-                        (context) => AlertDialog(
-                          title: Text("Login Failed"),
-                          content: Text(e.toString()),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.of(context).pop(),
-                              child: Text("OK"),
-                            ),
-                          ],
-                        ),
+                  print("Login Error: $e");
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Invalid email or password.")),
                   );
                 }
               },
