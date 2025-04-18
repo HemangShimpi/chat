@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -33,8 +35,22 @@ class SignupScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Registration logic here
+              onPressed: () async {
+                UserCredential user = await FirebaseAuth.instance
+                    .createUserWithEmailAndPassword(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                    );
+                await FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(user.user!.uid)
+                    .set({
+                      'firstName': firstNameController.text.trim(),
+                      'lastName': lastNameController.text.trim(),
+                      'role': 'user',
+                      'createdAt': Timestamp.now(),
+                    });
+                Navigator.pushNamed(context, '/');
               },
               child: Text("Register"),
             ),

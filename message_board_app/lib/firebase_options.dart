@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     projectId: 'messageboard-b5267',
     storageBucket: 'messageboard-b5267.firebasestorage.app',
   );
+
 }
