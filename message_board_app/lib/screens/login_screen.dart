@@ -34,8 +34,15 @@ class LoginScreen extends StatelessWidget {
                     context: context,
                     builder:
                         (context) => AlertDialog(
-                          title: Text("Login Successful"),
-                          content: Text("Welcome back!"),
+                          backgroundColor: Color(0xFF1E293B),
+                          title: Text(
+                            "Login Successful",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          content: Text(
+                            "Welcome back!",
+                            style: TextStyle(color: Colors.white70),
+                          ),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -45,7 +52,10 @@ class LoginScreen extends StatelessWidget {
                                   '/home',
                                 );
                               },
-                              child: Text("Continue"),
+                              child: Text(
+                                "Continue",
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ],
                         ),

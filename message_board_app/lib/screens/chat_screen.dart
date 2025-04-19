@@ -73,8 +73,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     ).format(context);
 
                     return ListTile(
-                      title: Text(data['message']),
-                      subtitle: Text('${data['username']} • $formattedTime'),
+                      title: Text(
+                        data['message'],
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        '${data['username']} • $formattedTime',
+                        style: TextStyle(color: Colors.white70),
+                      ),
                     );
                   },
                 );

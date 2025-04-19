@@ -24,20 +24,27 @@ class MessageBoardsScreen extends StatelessWidget {
         ],
       ),
       drawer: Drawer(
+        backgroundColor: Color(0xFF1E293B),
         child: ListView(
           children: [
-            DrawerHeader(child: Text("Menu")),
+            DrawerHeader(
+              child: Text(
+                "Menu",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
             ListTile(
-              title: Text("Profile"),
+              title: Text("Profile", style: TextStyle(color: Colors.white)),
               onTap: () => Navigator.pushNamed(context, '/profile'),
             ),
             ListTile(
-              title: Text("Settings"),
+              title: Text("Settings", style: TextStyle(color: Colors.white)),
               onTap: () => Navigator.pushNamed(context, '/settings'),
             ),
           ],
         ),
       ),
+
       body: ListView.builder(
         padding: EdgeInsets.all(16),
         itemCount: boards.length,
